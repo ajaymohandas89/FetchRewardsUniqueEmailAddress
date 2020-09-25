@@ -14,7 +14,7 @@ public class EmailValidator {
 		
 	}
 	
-	private String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+	private String regex = "^[A-Za-z0-9+_.-]+@[a-z]+\\.[a-z]{2,3}$";
 	 
 	public boolean validateEmailId(EmailAddress emailId) {
 		Pattern pattern = Pattern.compile(regex);
