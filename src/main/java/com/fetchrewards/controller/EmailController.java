@@ -15,6 +15,8 @@ import com.fetchrewards.dto.request.EmailObjDto;
 import com.fetchrewards.model.EmailAddress;
 import com.fetchrewards.service.EmailService;
 import com.fetchrewards.validator.EmailValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 public class EmailController {
@@ -24,6 +26,7 @@ public class EmailController {
 	
 	@Autowired
 	EmailService service;
+	private static final Logger logger = LoggerFactory.getLogger(EmailController.class);
 	
 	@PostMapping("/uniqueEmailList")
     public ResponseEntity<?> getUniqueEmailListSize(@Valid @RequestBody EmailObjDto list)
@@ -39,6 +42,7 @@ public class EmailController {
 		for(EmailAddress emailId:emailList) {
 			if(!validate.validateEmailId(emailId)) {
 				service.clearEmailList();
+				logger.error("invalid input message and ended wth response code 400");
 				return new ResponseEntity("Please provide valid input parameters", HttpStatus.BAD_REQUEST);
 			}
 		}
