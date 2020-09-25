@@ -35,14 +35,14 @@ public class EmailController {
 		
 		List<EmailAddress> emailList = service.getList();
 		
-		
+		//validating email address
 		for(EmailAddress emailId:emailList) {
 			if(!validate.validateEmailId(emailId)) {
 				service.clearEmailList();
 				return new ResponseEntity("Please provide valid input parameters", HttpStatus.BAD_REQUEST);
 			}
 		}
-		 
+		 //calculating unique email address
 		 return new ResponseEntity("The number of unique email address are "+service.getUniqueEmailsSize(emailList), HttpStatus.OK);  
     }
 	

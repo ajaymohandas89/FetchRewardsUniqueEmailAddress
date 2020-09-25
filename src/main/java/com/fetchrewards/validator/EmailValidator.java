@@ -13,7 +13,15 @@ public class EmailValidator {
 	public EmailValidator() {
 		
 	}
-	
+	/*
+	 * A-Z characters allowed
+	 * a-z characters allowed
+	 * 0-9 numbers allowed
+	 * Additionally email may contain only dot(.), dash(-) and underscore(_)
+	 * Rest all characters are not allowed
+	 * After @ any character a-z are allowed
+	 * dot(.) present after @ will contain charctaer a-z of minimum length 2 and maximum length 3
+	 * */
 	private String regex = "^[A-Za-z0-9+_.-]+@[a-z]+\\.[a-z]{2,3}$";
 	 
 	public boolean validateEmailId(EmailAddress emailId) {
